@@ -43,7 +43,28 @@ module.exports = {
                 placa
             };
         } else {
-            json.error = 'Campos não enviados!';
+            json.error = 'Campos não enviados';
+        }
+
+        res.json(json);
+    },
+
+    alterar: async (req, res) => {
+        let json = {error: '', result: {}};
+
+        let id = req.params.id;
+        let modelo = req.body.modelo;
+        let placa = req.body.placa;
+                
+        if (id && modelo && placa) {
+            await CarroService.alterar(id, modelo, placa);
+            json.result = {
+                id,
+                modelo,
+                placa
+            };
+        } else {
+            json.error = 'Campos não enviados';
         }
 
         res.json(json);
