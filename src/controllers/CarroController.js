@@ -14,5 +14,18 @@ module.exports = {
             });
         }
         res.json(json);
-    }
+    },
+
+    buscarUm: async (req, res) => {
+        let json = {error: '', result: {}};
+
+        let id = req.params.id;
+        let carro = await CarroService.buscarUm(id);
+
+        if (carro) {
+            json.result = carro;
+        }
+
+        res.json(json);
+    },
 };
