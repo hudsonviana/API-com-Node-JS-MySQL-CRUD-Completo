@@ -3,6 +3,6 @@ const router = express.Router();
 
 const CarroController = require('./controllers/CarroController');
 
-module.exports = {
-    router
-};
+router.get('/carros', CarroController.buscarTodos);
+
+module.exports = router;
