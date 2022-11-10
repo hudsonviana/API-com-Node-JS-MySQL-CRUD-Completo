@@ -69,4 +69,12 @@ module.exports = {
 
         res.json(json);
     },
+
+    excluir: async (req, res) => {
+        let json = {error: '', result: {}};
+
+        await CarroService.excluir(req.params.id);
+
+        res.json(json);
+    }
 };
